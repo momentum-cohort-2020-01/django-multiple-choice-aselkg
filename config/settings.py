@@ -27,8 +27,7 @@ BASE_DIR = Path(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-in_production = bool(os.getenv('PRODUCTION'))
-DEBUG = not in_production
+DEBUG = True
 
 
 ALLOWED_HOSTS = []
@@ -36,7 +35,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'registration',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -134,6 +132,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
@@ -151,9 +150,6 @@ INTERNAL_IPS = [
     # ...
 ]
 
-# For django-registration-redux
-REGISTRATION_AUTO_LOGIN = True
-LOGIN_REDIRECT_URL = '/'
 
 
 # Configure Django App for Heroku.
