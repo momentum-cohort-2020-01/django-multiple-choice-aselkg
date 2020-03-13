@@ -92,8 +92,8 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'snippetsnap',
-        'USER': 'bbonsign',
+        'NAME': 'snippets',
+        'USER': 'asel',
         'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '',
