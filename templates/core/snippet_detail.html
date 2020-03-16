@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block heading %}
+<h2>{{ snippet.title }} </h2>
+{% endblock %}
+
+{% block content %}
+<div>
+    <h2>{{ snippet.title }} </h2>
+    <pre><h4 id="myCode">{{ snippet.code }}</h4></pre>
+    <p>Addet: {{ snippet.created_at }}</p>
+    <p>Updated: {{ snippet.updated_at }}</p>
+    <button onclick="copyToClipboard('#myCode')">Copy text</button>
+
+    {% for snippet in snippets %}
+    <option value="{{ language.pk }}">{{ snippet.languages.name }}</option>
+    {% endfor %}
+
+
+    <a href="{% url 'snippet_edit' pk %}">Edit</a>
+    <a href="{% url 'snippet_delete' pk %}">Delete</a>
+</div>
+{% endblock %}
+
+
+<a id="search-bar" href="{% url 'snippet_detail' snippet.pk %}">
+    <p id="searchTitle">{{snippet.title}}</p>
+    <p id="search-code">{{snippet.code}}</p>
+    <p id="search-code">{{snippet.language}}</p>
+</a>

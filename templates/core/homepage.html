@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+{% for snippet in snippets %}
+<div class="main">
+
+    <a href="{% url 'snippet_detail' snippet.pk %}">
+        <ul id="snippetList">
+            <li>
+                <h2>{{snippet.title}}</h2>
+            </li>
+        </ul>
+
+
+    </a>
+</div>
+
+{% endfor %}
+{% endblock %}

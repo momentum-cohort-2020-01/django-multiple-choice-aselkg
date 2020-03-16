@@ -1,17 +1,20 @@
 from django.db import models
 from users.models import User
+from django.utils.text import slugify
 
 class Snippet(models.Model):
     title = models.CharField(max_length=80)
-    description = models.TextField(max_length=300)
-    lang = models.ForeignKey('Lang', on_delete=models.DO_NOTHING, null=True, blank=True)
-    user = models.ForeignKey(to=User,
+    code = models.TextField(max_length=300)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    languages = models.ForeignKey('Language', on_delete=models.DO_NOTHING, null=True, blank=True)
+    user = models.ForeignKey(to=User, default=None, null=True, 
                              on_delete=models.CASCADE,
                              related_name='snippets')
     def __str__(self):
         return f'{self.title}'
 
-class Lang(models.Model):
+class Language(models.Model):
     name = models.CharField(max_length=40)
     slug = models.SlugField(null=False, unique=True)
 

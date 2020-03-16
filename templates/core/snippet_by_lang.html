@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>These are {{lang.name}} Snippets</h1>
+{% for snippet in snippets %}
+<h2>{{ snippet.title }}</h2>
+<h4>by {{ snippet.code }}</h4>
+<h6>added:{{ snippet.created_at }}</h6>
+<h6>updated:{{ snippet.created_at }}</h6>
+{% endfor %}
+
+{% endblock %}

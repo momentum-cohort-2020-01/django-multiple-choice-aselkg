@@ -1,5 +1,7 @@
 from django.contrib import admin
-from .models import Snippet, Lang
+
+from .models import  Snippet, Language
+
 
 admin.site.register(Snippet)
-admin.site.register(Lang)
+admin.site.register(Language)

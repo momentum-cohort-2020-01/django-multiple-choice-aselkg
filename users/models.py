@@ -6,6 +6,4 @@ from django.contrib.auth.models import AbstractUser
 
 
 class User(AbstractUser):
-    
     pass
-# we can add additional information to user (example: bill_rate = models.PositiveIntegerField)

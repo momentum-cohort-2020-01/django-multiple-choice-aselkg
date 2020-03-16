@@ -17,14 +17,17 @@ from django.contrib import admin
 from django.conf import settings
 from django.urls import include, path
 from snippet import views as snippet_views
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', snippet_views.homepage, name="homepage"),
-    path('detail/', snippet_views.code_detail, name="detail"),
-    path('create/', snippet_views.code_create, name="code_create"),
-    path('edit/', snippet_views.code_edit, name="edit"),
-    path('', snippet_views.homepage, name="homepage"),
+    path('snippet/<int:pk>/', snippet_views.snippet_detail, name='snippet_detail'),
+    path('snippet/create/', snippet_views.snippet_create, name="snippet_create"),
+    path('edit/<int:pk>/', snippet_views.snippet_edit, name="snippet_edit"),
+    path('snippet/<int:pk>/delete/', snippet_views.snippet_delete, name="snippet_delete"),
+    path('snippet/languages/', snippet_views.lang_add, name="lang_add"),
+    path('search/', snippet_views.get_queryset, name='search_results'),
+    path('accounts/', include('registration.backends.default.urls')),
+    #path('snippet/<slug:slug>/', snippet_views.snippet_by_lang, name='snippet_by_lang'), 
 ]
 
 if settings.DEBUG:
@@ -35,7 +38,3 @@ if settings.DEBUG:
         # For django versions before 2.0:
         # url(r'^__debug__/', include(debug_toolbar.urls)),
     ] + urlpatterns
-
-
-
-

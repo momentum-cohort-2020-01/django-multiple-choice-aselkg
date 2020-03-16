@@ -9,9 +9,7 @@ django-extensions = "*"
 django-debug-toolbar = "*"
 werkzeug = "*"
 django-environ = "*"
-psycopg2 = "*"
-django-heroku = "*"
-gunicorn = "*"
+django-registration-redux = "*"
 
 [requires]
 python_version = "3.7"
