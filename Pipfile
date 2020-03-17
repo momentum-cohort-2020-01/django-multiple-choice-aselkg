@@ -12,6 +12,8 @@ django-environ = "*"
 django-registration-redux = "*"
 boto3 = "*"
 django-storages = "*"
+psycopg2 = "*"
+django-heroku = "*"
 
 [requires]
 python_version = "3.7"
