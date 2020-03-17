@@ -6,26 +6,14 @@
 {% endblock %}
 
 {% block content %}
-<div>
-    <h2>{{ snippet.title }} </h2>
-    <pre><h4 id="myCode">{{ snippet.code }}</h4></pre>
-    <p>Addet: {{ snippet.created_at }}</p>
-    <p>Updated: {{ snippet.updated_at }}</p>
+<div class="colum">
+    <a class="codeTitle" href="{% url 'snippet_detail' snippet.pk %}">{{snippet.title}}</a>
+    <pre><code class="language-{{snippet.languages}}">{{snippet.code}}</code></pre>
+    <p class="codeLang"> <strong>{{snippet.languages}}</strong></p>
+    <p class="cadeText">Added: {{snippet.updated_at}}</p>
+    <p class="cadeText">Last updated: {{snippet.updated_at}}</p>
     <button onclick="copyToClipboard('#myCode')">Copy text</button>
-
-    {% for snippet in snippets %}
-    <option value="{{ language.pk }}">{{ snippet.languages.name }}</option>
-    {% endfor %}
-
-
     <a href="{% url 'snippet_edit' pk %}">Edit</a>
     <a href="{% url 'snippet_delete' pk %}">Delete</a>
 </div>
 {% endblock %}
-
-
-<a id="search-bar" href="{% url 'snippet_detail' snippet.pk %}">
-    <p id="searchTitle">{{snippet.title}}</p>
-    <p id="search-code">{{snippet.code}}</p>
-    <p id="search-code">{{snippet.language}}</p>
-</a>

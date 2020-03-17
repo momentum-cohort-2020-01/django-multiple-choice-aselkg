@@ -4,18 +4,48 @@ li {
 
 #snippetList {
   list-style-type: none;
-  padding: 0;
-  margin: 0;
+  text-align: center;
+  padding: 15px;
+  margin: auto;
 }
 
-#snippetList li h2 {
-  border: 1px solid #ddd;
-  margin-top: -1px; /* Prevent double borders */
-  background-color: #f6f6f6;
-  padding: 12px;
-  text-decoration: none;
-  font-size: 18px;
-  color: black;
-  display: block
+
+.colum{
+    width: 33%;
+    background-color: rgb(36, 48, 104);
+    margin-right: 3px;
+    border-radius: 10px;
 }
 
+.codeTitle{
+    padding-left: 20px;
+    font-size: 35px;
+    color: rgb(199, 15, 116);
+}
+
+.cadeText{
+    color: white;
+}
+
+.codeLang{
+    color: rgb(115, 207, 62);
+    
+
+}
+.codeForm{
+    color: white;
+    width: 600px;
+    margin: 0 auto;
+    background-color: rgb(36, 48, 104);
+}
+@media screen and (max-width: 992px) {
+  .colum {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .colum {
+    width: 100%;
+  }
+}

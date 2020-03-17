@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse
 from django.views.decorators.http import require_GET, require_POST
 from django.contrib.auth.decorators import login_required
 from .models import Snippet, Language
@@ -32,14 +32,12 @@ def snippet_detail(request, pk):
     return render(request, "core/snippet_detail.html", {'snippet': snippet, 'pk': pk})
 
 def snippet_edit(request, pk):
-   def add_snippet(request):
+    snippet = get_object_or_404(Snippet, pk=pk)
     if request.method == 'POST':
-        form = SnippetForm(request.POST)
+        form = SnippetForm(request.POST, instance=snippet)
         if form.is_valid():
-            snippet = form.save(commit=False)
-            snippet.owner = request.user
-            snippet.save()
-            return redirect('user_home')
+            snippet = form.save()
+            return redirect('homepage')
     else:
         form = SnippetForm(instance=snippet)
     return render(request, 'core/snippet_edit.html', {'snippet': snippet, 'form':form, 'pk': pk})
@@ -61,14 +59,6 @@ def lang_add(request):
             form = LanguageForm()
     return render(request, 'core/add_language.html', {'form': form})
 
-
-
-def get_queryset(self): # new
-    query = self.request.GET.get('q')
-    object_list = Snippet.objects.filter(
-        Q(title__icontains=query) | Q(language__icontains=query)
-    )
-    return render(request, "core/homepage.html", {"object_list": object_list})
 
     # def snippet_by_lang(request, slug):
     #     lang = Language.objects.get(slug=slug)

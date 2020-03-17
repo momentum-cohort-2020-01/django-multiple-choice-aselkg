@@ -10,6 +10,8 @@ django-debug-toolbar = "*"
 werkzeug = "*"
 django-environ = "*"
 django-registration-redux = "*"
+boto3 = "*"
+django-storages = "*"
 
 [requires]
 python_version = "3.7"
