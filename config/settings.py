@@ -32,7 +32,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['code-snippet.herokuapp.com']
 
 # Application definition
 
@@ -144,8 +144,10 @@ INTERNAL_IPS = [
 # Registration settings
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 LOGIN_REDIRECT_URL = '/'
-ACCOUNT_ACTIVATION_DAYS = 7
-REGISTRATION_AUTO_LOGIN = True
+#ACCOUNT_ACTIVATION_DAYS = 7
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+
 
 import django_heroku
 django_heroku.settings(locals())
+del DATABASES['default']['OPTIONS']['sslmode']
