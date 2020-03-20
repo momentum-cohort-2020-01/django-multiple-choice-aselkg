@@ -8,6 +8,8 @@ class Snippet(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     languages = models.ForeignKey('Language', on_delete=models.DO_NOTHING, null=True, blank=True)
+    public = models.BooleanField(default=False)
+    language = models.CharField(max_length=80)
     user = models.ForeignKey(to=User, default=None, null=True, 
                              on_delete=models.CASCADE,
                              related_name='snippets')

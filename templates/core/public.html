@@ -2,25 +2,19 @@
 {% load static %}
 
 {% block content %}
-
-
-
 <ul id="snippetList" class="row">
     {% for snippet in snippets %}
-    {% if request.user.is_authenticated %}
+    {% if request.user.is_authenticated or snippet.public %}
     <li class="colum mb-4 card">
         <a class="codeTitle" href="{% url 'snippet_detail' snippet.pk %}">{{snippet.title}}</a>
         <pre><code id="snippets" class="language-{{snippet.languages}}">{{snippet.code}}</code></pre>
-        <p class="codeText">Last updated: {{snippet.updated_at}}</p>
         <p class="codeLang"> <strong>{{snippet.language}}</strong></p>
-
+        <p class="codeText">Last updated: {{snippet.updated_at}}</p>
+        <p id="snippetCopy" onclick="copyToClipboard('#snippets')">Copy</p>
         {% endif %}
     </li>
 
 
     {% endfor %}
 </ul>
-
-
-
 {% endblock %}

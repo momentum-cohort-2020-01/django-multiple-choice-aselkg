@@ -1,3 +1,7 @@
+body{
+  background-color: #60728A;
+}
+
 li {
     padding-right: 25px;
 }
@@ -12,9 +16,16 @@ li {
 
 .colum{
     width: 33%;
-    background-color: rgb(36, 48, 104);
+    background-color: rgb(11, 34, 77);
     margin-right: 3px;
     border-radius: 10px;
+}
+.detail{
+  margin: 25px;
+}
+
+#snippet_box{
+  padding: 10%;
 }
 
 .codeTitle{
@@ -23,7 +34,7 @@ li {
     color: rgb(199, 15, 116);
 }
 
-.cadeText{
+.codeText{
     color: white;
 }
 
@@ -32,12 +43,24 @@ li {
     
 
 }
+#snippetCopy{
+  color: rgb(194, 119, 137);
+}
+
+#snippet_create{
+  padding: 10%;
+}
 .codeForm{
     color: white;
-    width: 600px;
-    margin: 0 auto;
-    background-color: rgb(36, 48, 104);
+    margin-left: 30%;
+    margin-top: 25px;
+    
 }
+.btn {
+  margin-left: 7%;
+}
+ 
+
 @media screen and (max-width: 992px) {
   .colum {
     width: 50%;

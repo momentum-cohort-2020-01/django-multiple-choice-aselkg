@@ -24,9 +24,8 @@ urlpatterns = [
     path('snippet/create/', snippet_views.snippet_create, name="snippet_create"),
     path('edit/<int:pk>/', snippet_views.snippet_edit, name="snippet_edit"),
     path('snippet/<int:pk>/delete/', snippet_views.snippet_delete, name="snippet_delete"),
-    path('snippet/languages/', snippet_views.lang_add, name="lang_add"),
+    path('snippet/public/', snippet_views.public, name="public"),
     path('accounts/', include('registration.backends.simple.urls')),
-    #path('snippet/<slug:slug>/', snippet_views.snippet_by_lang, name='snippet_by_lang'), 
 ]
 
 if settings.DEBUG:

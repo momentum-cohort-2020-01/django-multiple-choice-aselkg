@@ -6,14 +6,19 @@
 {% endblock %}
 
 {% block content %}
-<div class="colum">
-    <a class="codeTitle" href="{% url 'snippet_detail' snippet.pk %}">{{snippet.title}}</a>
-    <pre><code class="language-{{snippet.languages}}">{{snippet.code}}</code></pre>
-    <p class="codeLang"> <strong>{{snippet.languages}}</strong></p>
-    <p class="cadeText">Added: {{snippet.updated_at}}</p>
-    <p class="cadeText">Last updated: {{snippet.updated_at}}</p>
-    <button onclick="copyToClipboard('#myCode')">Copy text</button>
-    <a href="{% url 'snippet_edit' pk %}">Edit</a>
-    <a href="{% url 'snippet_delete' pk %}">Delete</a>
+{% if request.user.is_authenticated %}
+<div class="codeForm colum detail">
+    <div id="snippet_box">
+        <a class="codeTitle" href="{% url 'snippet_detail' snippet.pk %}">{{snippet.title}}</a>
+        <pre><code class="language-{{snippet.languages}}">{{snippet.code}}</code></pre>
+        <p class="codeLang"> <strong>{{snippet.language}}</strong></p>
+        <p class="codeText">Added: {{snippet.updated_at}}</p>
+        <p class="codeText">Last updated: {{snippet.updated_at}}</p>
+        <a href="{% url 'snippet_edit' pk %}">Edit</a>
+        <a href="{% url 'snippet_delete' pk %}">Delete</a>
+    </div>
 </div>
+{% else%}
+<p class="codeText">Unfortunately you can't have access to private snippets.</p>
+{% endif %}
 {% endblock %}

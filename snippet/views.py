@@ -4,9 +4,9 @@ from django.views.decorators.http import require_GET, require_POST
 from django.contrib.auth.decorators import login_required
 from .models import Snippet, Language
 from users.models import User
-from .forms import SnippetForm, LanguageForm
+from .forms import SnippetForm
 
-@login_required
+
 def homepage(request):
     snippets = Snippet.objects.all()
     languages = Language.objects.all()
@@ -48,7 +48,7 @@ def snippet_delete(request, pk):
     snippet.delete()
     return redirect('homepage')
 
-@login_required
+
 def lang_add(request):
     if request.method == 'POST':
         form = LanguageForm(request.POST)
@@ -57,10 +57,9 @@ def lang_add(request):
             return redirect('homepage')
     else:
             form = LanguageForm()
-    return render(request, 'core/add_language.html', {'form': form})
+    return render(request, 'core/snippet_create.html', {'form': form})
 
-
-    # def snippet_by_lang(request, slug):
-    #     lang = Language.objects.get(slug=slug)
-    #     snippet_for_lang=SnippetForm.objects.filter(lang=lang)
-    #     return render(request, 'core/snippet_by_lang.html', {'snippet':snippet_for_lang, 'lang': lang })
+def public(request):
+    snippets = Snippet.objects.all()
+    languages = Language.objects.all()
+    return render(request, "core/public.html", {"snippets": snippets, "languages": languages})
