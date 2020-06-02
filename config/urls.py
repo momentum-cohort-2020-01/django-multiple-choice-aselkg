@@ -26,6 +26,8 @@ urlpatterns = [
     path('snippet/<int:pk>/delete/', snippet_views.snippet_delete, name="snippet_delete"),
     path('snippet/public/', snippet_views.public, name="public"),
     path('accounts/', include('registration.backends.simple.urls')),
+    path('accounts/', include('registration.backends.default.urls')),
+   
 ]
 
 if settings.DEBUG:
